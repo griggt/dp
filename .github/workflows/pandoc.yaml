@@ -15,10 +15,9 @@ jobs:
          || contains(github.event.ref, 'master')"
     container:
       image: docker://pandoc/ubuntu-latex:2.11.4
-      env:
-          # TODO better to not need to hardcode this here
-          TEXLIVE_HOME: /opt/texlive/texdir
       options: --entrypoint /bin/bash
+      env:
+          TEXLIVE_HOME: /opt/texlive/texdir
 
     steps:
       - name: Git Checkout
@@ -32,7 +31,7 @@ jobs:
       - name: Generate PDF reference documentation
         run: cd pandoc && ./md2pdf reference
 
-      - name: Upload artifact
+      - name: Upload PDF artifact
         uses: actions/upload-artifact@v2
         with:
           name: reference-pdf
