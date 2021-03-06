@@ -141,12 +141,12 @@ PANDOC_OPTS="$PANDOC_OPTS -V geometry=a4paper -V geometry:margin=30mm"
 PANDOC_OPTS="$PANDOC_OPTS -V fontsize=12pt"
 ## see https://www.htmlcsscolor.com/hex/66001E
 PANDOC_OPTS="$PANDOC_OPTS -V urlcolor=blue -V linkcolor=[HTML]{66001E}"
-PANDOC_OPTS="$PANDOC_OPTS -V subtitle='$SUBTITLE' -V date='$TODAY'"
+#PANDOC_OPTS="$PANDOC_OPTS -V subtitle='$SUBTITLE' -V date='$TODAY'"
 PANDOC_OPTS="$PANDOC_OPTS --template=$TEMPLATE_FILE"
 PANDOC_OPTS="$PANDOC_OPTS --pdf-engine=$LATEX_CMD"
 PANDOC_OPTS="$PANDOC_OPTS --output=$OUTPUT_FILE"
 
-[ $DEBUG ] && PANDOC_OPS="--verbose $PANDOC_OPTS" || PANDOC_OPTS="--quiet $PANDOC_OPTS"
+[ $DEBUG ] && PANDOC_OPTS="--verbose $PANDOC_OPTS" || PANDOC_OPTS="--quiet $PANDOC_OPTS"
 
 ##############################################################################
 ## Main
