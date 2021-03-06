@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -x
 
+# Dump environment
+printenv
+
+# Install tcolorbox?
+tlmgr update --all --self
+tlmgr install tcolorbox
+
 ## Created by mics (https://github.com/michelou/) on December 2020.
 
 ##############################################################################
