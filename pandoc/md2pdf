@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#set -x
+
+#printenv
+
 ## Created by mics (https://github.com/michelou/) on December 2020.
 
 ##############################################################################
@@ -133,7 +137,7 @@ PANDOC_OPTS="$PANDOC_OPTS --template=$TEMPLATE_FILE"
 PANDOC_OPTS="$PANDOC_OPTS --pdf-engine=$LATEX_CMD"
 PANDOC_OPTS="$PANDOC_OPTS --output=$OUTPUT_FILE"
 
-[ $DEBUG ] && PANDOC_OPS="--verbose $PANDOC_OPTS" || PANDOC_OPTS="--quiet $PANDOC_OPTS"
+[ $DEBUG ] && PANDOC_OPTS="--verbose $PANDOC_OPTS" || PANDOC_OPTS="--quiet $PANDOC_OPTS"
 
 ##############################################################################
 ## Main
@@ -179,8 +183,10 @@ if [ $OS == "Win" ]; then
     ## direct call to Pandoc executable fails in Cygwin/MinGw
     eval "$PANDOC_CMD $PANDOC_OPTS $INPUT_FILE"
 else
-    eval "$PANDOC_CMD $PANDOC_OPTS $INPUT_FILE"
+    cd pandoc && eval "$PANDOC_CMD $PANDOC_OPTS $INPUT_FILE"
 fi
 [ $? -eq 0 ] || exit 1
+
+ls -l "$OUTPUT_FILE"
 
 exit 0

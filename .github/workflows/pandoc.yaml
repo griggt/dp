@@ -20,6 +20,9 @@ jobs:
 
       - name: Generate PDF reference documentation
         uses: docker://pandoc/ubuntu-latex:2.11.4
+        env:
+          # TODO can we determine this programmatically?
+          TEXLIVE_HOME: /opt/texlive/texdir
         with:
           entrypoint: ./pandoc/md2pdf
           args: reference
