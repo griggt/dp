@@ -13,19 +13,24 @@ jobs:
          )
          || contains(github.event.ref, 'pandoc')
          || contains(github.event.ref, 'master')"
+    container:
+      image: docker://pandoc/ubuntu-latex:2.11.4
+      env:
+          # TODO better to not need to hardcode this here
+          TEXLIVE_HOME: /opt/texlive/texdir
+      options: --entrypoint /bin/bash
 
     steps:
       - name: Git Checkout
         uses: actions/checkout@v2
 
+      - name: Install additional TeX Live packages
+        run: |
+          tlmgr update --all --self
+          tlmgr install tcolorbox environ selnolig
+
       - name: Generate PDF reference documentation
-        uses: docker://pandoc/ubuntu-latex:2.11.4
-        env:
-          # TODO can we determine this programmatically?
-          TEXLIVE_HOME: /opt/texlive/texdir
-        with:
-          entrypoint: ./pandoc/md2pdf
-          args: reference
+        run: cd pandoc && ./md2pdf reference
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2

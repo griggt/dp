@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-#set -x
-
-#printenv
-
-# Install necessary texlive packages
-tlmgr update --all --self
-tlmgr install tcolorbox
-tlmgr install environ
-tlmgr install selnolig
-
 ## Created by mics (https://github.com/michelou/) on December 2020.
 
 ##############################################################################
@@ -189,10 +179,8 @@ if [ $OS == "Win" ]; then
     ## direct call to Pandoc executable fails in Cygwin/MinGw
     eval "$PANDOC_CMD $PANDOC_OPTS $INPUT_FILE"
 else
-    cd pandoc && eval "$PANDOC_CMD $PANDOC_OPTS $INPUT_FILE"
+    eval "$PANDOC_CMD $PANDOC_OPTS $INPUT_FILE"
 fi
 [ $? -eq 0 ] || exit 1
-
-ls -l "$OUTPUT_FILE"
 
 exit 0
