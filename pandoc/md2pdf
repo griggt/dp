@@ -155,7 +155,7 @@ if [[ -d "$IMAGES_DIR" ]]; then
     TARGET_IMAGES_DIR=$TARGET_DIR/images
     [ -d "$TARGET_IMAGES_DIR" ] || mkdir -p "$TARGET_IMAGES_DIR"
     [ $DEBUG ] && echo "Copy image files to directory \"${TARGET_IMAGES_DIR/$PROG_HOME\//}\"" 1>&2
-    cp -r "$IMAGES_DIR" "$TARGET_DIR/"
+    cp -rv "$IMAGES_DIR" "$TARGET_DIR/"
     [ $? -eq 0 ] || { echo "Failed to copy image files to directory \"$TARGET_IMAGES_DIR\"" 1>&2; exit 1; }
 fi
 
@@ -177,7 +177,7 @@ for f in $MD_FILES; do
     ## Markdown file contains image urls
     if [[ "$OUT_FILE" =~ -nulls\.md$ ]]; then
         TMP_FILE=$OUT_FILE.tmp
-        cp "$OUT_FILE" "$TMP_FILE"
+        cp -v "$OUT_FILE" "$TMP_FILE"
         [ $DEBUG ] && echo "Update file \"${OUT_FILE/$PROG_HOME\//}\"" 1>&2
         ## e.g. ![](../../../images/image.png "Image")
         sed "s/\!\[\(.*\)\](\(\.\.\/\)*\(.*\))/![\1](\.\.\/out\/pandoc\/\3)/g" $TMP_FILE > $OUT_FILE
