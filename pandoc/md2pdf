@@ -162,6 +162,9 @@ if [[ -d "$IMAGES_DIR" ]]; then
     [ $? -eq 0 ] || { echo "Failed to copy image files to directory \"$TARGET_IMAGES_DIR\"" 1>&2; exit 1; }
 fi
 
+echo "Contents of target dir after copy:"
+ls -lR "$TARGET_DIR"
+
 ## transform anchors in Markdown files
 SRC_DIR=$SOURCE_DIR/$PROJECT_NAME
 SRC_MANAGED_DIR=$TARGET_DIR/src_managed/$PROJECT_NAME
