@@ -21,5 +21,7 @@ jobs:
       - name: Generate PDF reference documentation
         uses: docker://pandoc/latex:2.11.4
         with:
-          entrypoint: ./pandoc/md2pdf
-          args: reference
+          entrypoint: ls
+          args: -lR
+          #entrypoint: ./pandoc/md2pdf
+          #args: reference
