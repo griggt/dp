@@ -192,7 +192,7 @@ if [ $OS == "Win" ]; then
     ## direct call to Pandoc executable fails in Cygwin/MinGw
     eval "$PANDOC_CMD $PANDOC_OPTS $INPUT_FILE"
 else
-    eval "$PANDOC_CMD $PANDOC_OPTS $INPUT_FILE"
+    $PANDOC_CMD $PANDOC_OPTS $INPUT_FILE
 fi
 [ $? -eq 0 ] || exit 1
 
