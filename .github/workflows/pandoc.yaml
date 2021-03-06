@@ -25,3 +25,9 @@ jobs:
           #args: -lR
           entrypoint: ./pandoc/md2pdf
           args: reference
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: reference-pdf
+          path: out/pandoc/scala3_reference.pdf
