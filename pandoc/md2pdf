@@ -73,7 +73,7 @@ LATEX=lualatex$EXT
     case $OS in
         Win) LATEX_CMD=$TEXLIVE_HOME/bin/win32/$LATEX ;;
         Mac) LATEX_CMD=$TEXLIVE_HOME/bin/x86_64-darwin/$LATEX ;;
-        *)   LATEX_CMD=$TEXLIVE_HOME/bin/x86_64-linux/$LATEX
+        *)   LATEX_CMD=$LATEX
     esac
     [ -x "$LATEX_CMD" ] || { echo "$LATEX executable not found" 1>&2; exit 1; }
 ## fi
