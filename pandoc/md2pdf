@@ -199,4 +199,6 @@ else
 fi
 [ $? -eq 0 ] || exit 1
 
+ls -l "$OUTPUT_FILE"
+
 exit 0
