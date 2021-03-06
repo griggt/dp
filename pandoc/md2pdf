@@ -2,12 +2,13 @@
 set -x
 
 # Dump environment
-printenv
+#printenv
 
 # Install tcolorbox?
 tlmgr update --all --self
 tlmgr install tcolorbox
 tlmgr install environ
+tlmgr install selnolig
 
 ## Created by mics (https://github.com/michelou/) on December 2020.
 
