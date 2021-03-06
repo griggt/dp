@@ -4,6 +4,9 @@ set -x
 # Dump environment
 #printenv
 
+# Directory listing
+ls -lR
+
 # Install tcolorbox?
 tlmgr update --all --self
 tlmgr install tcolorbox
