@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     if: "(    github.event_name == 'pull_request'
            && !contains(github.event.pull_request.body, '[skip ci]')
            && !contains(github.event.pull_request.body, '[skip docs]')
@@ -14,7 +14,7 @@ jobs:
          || contains(github.event.ref, 'pandoc')
          || contains(github.event.ref, 'master')"
     container:
-      image: docker://pandoc/ubuntu-latex:2.11.4
+      image: docker://pandoc/ubuntu-latex:2.16.2
       options: --entrypoint /bin/bash
       env:
           TEXLIVE_HOME: /opt/texlive/texdir
